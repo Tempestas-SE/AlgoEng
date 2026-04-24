@@ -1,0 +1,67 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    
+    int n, m, k;
+    cin >> n >> m >> k;
+    
+    //Read the graph: store each unique undirected edge (with weight)
+    map<pair<int, int>, int> edgeWeight;
+    
+    for (int i = 0; i < 2 * m; i++) {
+        int u, v, w;
+        cin >> u >> v >> w;
+        
+        //Normalize | always store edge with u < v
+        if (u > v) swap (u, v);
+        edgeWeight[{u, v}] = w; //Each edge will be seen twice; keep the last weight
+    }
+    
+    //Read the block of each node
+    vector<int> block(n + 1);
+    vector<int> blockSize(k, 0);
+    
+    for (int i = 1; i <= n; i++) {
+        cin >> block[i];
+        blockSize[block[i]]i++;
+    }
+    
+    int edgeCut = 0;
+    long long weightedEdge = 0;
+    
+    //Iterate over all edges once (via the map)
+    for (auto& p : edgeWeight) {
+        int u = p.first.first;
+        int v= p.first.second;
+        int wt = p.second;
+        
+        if (block[u] !=block[v]) {
+            edgeCut++;
+            weightedEdgeCut += wt;
+        }
+    }
+    
+    //Find the largest block
+    int heaviest = 0;
+    for (int i = 0; i < k; i++) {
+        heaviest = max(heaviest, blockSize[i]);
+    }
+    
+    //Balance = size of the largest block / (n / k)
+    double balance = (double)heaviest / ((double)n / (double)k);
+    
+    cout << edgeCut << '\n';
+    cout << weightedEdgeCut << '\n';
+    cout << balance << '\n';
+    
+    return 0;
+}
