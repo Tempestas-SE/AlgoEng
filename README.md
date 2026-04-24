@@ -1,3 +1,3 @@
 # Algorithm Engineering
 
-This repository consists of the works written & coded by the student and own of this repository Faiq Baig
+This repository consists of the works written & coded by the student and owner of this repository Faiq Baig
