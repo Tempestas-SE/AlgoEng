@@ -1,4 +1,4 @@
-// Topology Sort with a DAG File made by Faiq Baig || Matrikel Number: 4767143
+// Topology Sort of a DAG File made by Faiq Baig || Matrikel Number: 4767143
 // In this code, I use Kahn's algorithm: this repeatedly removes node with in-degree 0
 
 #include <algorithm>
@@ -49,5 +49,23 @@ int main() {
     int u = zeroDeg.back();
     zeroDeg.pop_back();
     topoOrder.push_back(u);
+
+    // "Remove" u by decreasing the in-degree of each neighbour
+    for (int v : adj[u]) {
+      inDeg[v]--;
+      // If a neighbour now has no incoming edges, add it
+      if (inDeg[v] == 0) {
+        zeroDeg.push_back(v);
+        }
+      }
    }
+
+   // Output the topological order
+   for (int i = 0; i < n; i++) {
+    printf("%d", topoOrder[i]);
+    if (i < n - 1) printf(" ");
+  }
+   printf("\n");
+
+   return 0;
 }
