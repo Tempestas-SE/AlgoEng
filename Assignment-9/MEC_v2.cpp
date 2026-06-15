@@ -1,8 +1,8 @@
 /* 
 Min-Edge-Coloring (MEC) File made by Faiq Baig || Matrikel Number : 4767143
-This version uses Edge Ordering Heuristic - sorts by decreasing degree sum
-before coloring, typically reducing the number of colors used. Also switches
-from vector<bool> to vector<char> (from bit-packed to byte-addressed)
+This version uses Edge Ordering Heuristic - sorts by decreasing degree sum before coloring, 
+typically reducing the number of colors used. Also switches from vector<bool> to vector<char>
+(from bit-packed, that is slow to byte-addressed, that is fast.)
 */
 
 #include <cstdio>
