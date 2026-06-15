@@ -1,3 +1,9 @@
+/*
+Min-Edge-Coloring (MEC) File made by Faiq Baig || Matrikel Number : 4767143
+This versison of MEC uses Naive Greedy - scans all the edges of both endpoints
+for each candidate color.
+*/
+
 #include <cstdio>
 #include <cmath>
 #include <algorithm>
